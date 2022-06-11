@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ClassDiagram name="Game">
+  <ClassDiagramComponents>
+    <Class name="Ball" package="game" visibility="public" xPosition="212.0" yPosition="86.0">
+      <Fields>
+        <Field name="vx" type="float" visibility="public"/>
+        <Field name="vy" type="float" visibility="public"/>
+        <Field name="onAir" type="boolean" visibility="public"/>
+        <Field name="thrown" type="boolean" visibility="public"/>
+        <Field name="goDown" type="boolean" visibility="public"/>
+        <Field name="x" type="int" visibility="public"/>
+        <Field name="y" type="int" visibility="public"/>
+        <Field name="size" type="int" visibility="public"/>
+        <Field name="bounce" type="int" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="package">
+          <Argument type="int" name="x"/>
+          <Argument type="int" name="y"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="handleGravity" returnType="void" visibility="public">
+          <Argument type="Player" name="p1"/>
+          <Argument type="Player" name="p2"/>
+          <Argument type="int" name="floor"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="Game" package="game" visibility="public" xPosition="595.0" yPosition="288.0">
+      <Fields>
+        <Field name="p1" type="Player" visibility="public"/>
+        <Field name="p2" type="Player" visibility="public"/>
+        <Field name="ball" type="Ball" visibility="public"/>
+        <Field name="floor" type="int" visibility="private"/>
+        <Field name="frames" type="int" visibility="private"/>
+        <Field name="minutes" type="int" visibility="private"/>
+        <Field name="seconds" type="int" visibility="private"/>
+        <Field name="running" type="boolean" visibility="private"/>
+        <Field name="end" type="boolean" visibility="private"/>
+        <Field name="sc1" type="String" visibility="private"/>
+        <Field name="sc2" type="String" visibility="private"/>
+        <Field name="countDown" type="String" visibility="private"/>
+        <Field name="endMessage" type="String" visibility="private"/>
+        <Field name="width" type="int" visibility="private" isFinal="true"/>
+        <Field name="height" type="int" visibility="private" isFinal="true"/>
+        <Field name="boardSize" type="int" visibility="private" isFinal="true"/>
+        <Field name="frame" type="Interface" visibility="private" isFinal="true"/>
+        <Field name="col1basketIn" type="Rectangle" visibility="private" isFinal="true"/>
+        <Field name="col2basketIn" type="Rectangle" visibility="private" isFinal="true"/>
+        <Field name="col1basketOut" type="Rectangle" visibility="private" isFinal="true"/>
+        <Field name="col2basketOut" type="Rectangle" visibility="private" isFinal="true"/>
+        <Field name="col1pole" type="Rectangle" visibility="private" isFinal="true"/>
+        <Field name="col2pole" type="Rectangle" visibility="private" isFinal="true"/>
+        <Field name="aiming1" type="Image" visibility="private" isFinal="true"/>
+        <Field name="aiming2" type="Image" visibility="private" isFinal="true"/>
+        <Field name="normal1" type="Image" visibility="private"/>
+        <Field name="normal2" type="Image" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="package"/>
+      </Constructors>
+      <Methods>
+        <Method name="paint" returnType="void" visibility="public">
+          <Argument type="Graphics" name="g"/>
+        </Method>
+        <Method name="run" returnType="void" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="Interface" package="game" visibility="public" xPosition="620.0" yPosition="20.0">
+      <Fields>
+        <Field name="game" type="Game" visibility="package"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="package">
+          <Argument type="Game" name="game"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="keyPressed" returnType="void" visibility="public">
+          <Argument type="KeyEvent" name="e"/>
+        </Method>
+        <Method name="keyTyped" returnType="void" visibility="public">
+          <Argument type="KeyEvent" name="e"/>
+        </Method>
+        <Method name="keyReleased" returnType="void" visibility="public">
+          <Argument type="KeyEvent" name="e"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="Main" package="game" visibility="public" xPosition="920.0" yPosition="20.0">
+      <Fields/>
+      <Constructors/>
+      <Methods>
+        <Method name="main" returnType="void" visibility="public" isStatic="true">
+          <Argument type="String[]" name="args"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="Player" package="game" visibility="public" xPosition="920.0" yPosition="196.0">
+      <Fields>
+        <Field name="score" type="int" visibility="public"/>
+        <Field name="x" type="int" visibility="public"/>
+        <Field name="vx" type="int" visibility="public"/>
+        <Field name="size" type="int" visibility="public"/>
+        <Field name="jumping" type="boolean" visibility="public"/>
+        <Field name="holding" type="boolean" visibility="public"/>
+        <Field name="aiming" type="boolean" visibility="public"/>
+        <Field name="up" type="boolean" visibility="public"/>
+        <Field name="down" type="boolean" visibility="public"/>
+        <Field name="left" type="boolean" visibility="public"/>
+        <Field name="right" type="boolean" visibility="public"/>
+        <Field name="holdBox" type="Rectangle" visibility="package"/>
+        <Field name="aimBox" type="Rectangle" visibility="package"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="package">
+          <Argument type="int" name="x"/>
+          <Argument type="int" name="y"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="handleMovement" returnType="void" visibility="public"/>
+        <Method name="handleBall" returnType="int" visibility="public">
+          <Argument type="Player" name="oponent"/>
+          <Argument type="Rectangle" name="ballCol"/>
+          <Argument type="Ball" name="ball"/>
+          <Argument type="int" name="floor"/>
+        </Method>
+      </Methods>
+    </Class>
+  </ClassDiagramComponents>
+  <ClassDiagramRelations>
+    <HasRelation name="ball" source="game.Game" target="game.Ball" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="game" source="game.Interface" target="game.Game" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="game.Player" target="game.Player" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="frame" source="game.Game" target="game.Interface" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="p2" source="game.Game" target="game.Player" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="p1" source="game.Game" target="game.Player" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="game.Ball" target="game.Player" sourceCardinality="1..1" targetCardinality="1..1"/>
+  </ClassDiagramRelations>
+</ClassDiagram>
